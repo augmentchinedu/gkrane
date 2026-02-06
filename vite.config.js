@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 const pkg = process.env.PACKAGE;
 const username = process.env.USERNAME;
+const type = process.env.TYPE;
 const ws = process.env.WEBSOCKET;
 const theme = process.env.THEME ? JSON.parse(process.env.THEME) : {};
 
@@ -17,15 +18,15 @@ export default defineConfig({
   define: {
     __PKG__: JSON.stringify(pkg),
     __USERNAME__: JSON.stringify(username),
+    __TYPE__: JSON.stringify(type),
     "import.meta.env.WS": JSON.stringify(ws),
     "import.meta.env.THEME": JSON.stringify(theme),
   },
   resolve: {
     alias: {
       "@": path.resolve("."),
-      "package-pages": path.resolve(__dirname, `packages/${pkg}/pages`),
+      "package-pages": path.resolve(__dirname, `packages/${type}s/${pkg}/pages`),
       "global-pages": path.resolve(__dirname, `pages`),
-      gql: path.resolve(__dirname, `packages/${pkg}/gql`),
     },
   },
   server: {

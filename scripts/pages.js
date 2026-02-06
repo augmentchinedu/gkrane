@@ -86,7 +86,6 @@ ${routes.join(",\n")}
   }
 
   fs.writeFileSync(path.join(dir, "index.js"), content, "utf-8");
-  console.log(`Generated nested index.js for ${dir}`);
 }
 
 // Main function

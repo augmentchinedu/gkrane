@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { createGame } from "@/functions";
+import { createGame } from "@/functions/game";
 import { useWebSocket } from "@/store/tools/ws.js";
 import { useStore } from "@/store";
 

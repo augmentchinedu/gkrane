@@ -1,10 +1,8 @@
 import { reactive } from "vue";
 import { defineStore } from "pinia";
-import { client, gql } from "../gql/index.js";
-import { USER_BASE_FIELDS } from "../gql/user.base.js";
-import { USER_CLIENT_FIELDS } from "gql/user.js";
-import { SIGNUP, SIGNIN } from "../gql/mutations/auth.js";
-import { updateToken } from "@/gql/index.js";
+import { client, gql } from "@/gql/index.js";
+import { USER_BASE_FIELDS } from "@/gql/queries/user.base.js";
+import { SIGNUP, SIGNIN } from "@/gql/mutations/auth.js";
 import { useGamer } from "./gamer/index.js";
 import { useApp } from "./app/index.js";
 
@@ -51,12 +49,10 @@ export const useStore = defineStore("store", () => {
       if (app.isAuthenticated.value) {
         const { user: userData } = await client.request(gql`
           ${USER_BASE_FIELDS}
-          ${USER_CLIENT_FIELDS}
 
           query GetUser {
             user {
               ...UserBaseFields
-              ...UserFields
             }
           }
         `);
@@ -95,7 +91,7 @@ export const useStore = defineStore("store", () => {
       }
 
       // ✅ Success
-      updateToken(signup.token);
+      localStorage.setItem("token", signup.token);
       app.isAuthenticated.value = true;
       Object.assign(user, signup.user);
 
@@ -126,7 +122,7 @@ export const useStore = defineStore("store", () => {
         throw new Error(data.error?.message || "Invalid credentials");
       }
 
-      updateToken(data.token);
+      localStorage.setItem("token", data.token);
       app.isAuthenticated.value = true;
       Object.assign(user, data.user);
 

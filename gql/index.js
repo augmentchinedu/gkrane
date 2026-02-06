@@ -1,4 +1,4 @@
-import { GraphQLClient } from "graphql-request";
+import { GraphQLClient, gql } from "graphql-request";
 
 const isCodespaces = window.location.hostname.includes("github.dev");
 
@@ -16,3 +16,5 @@ export const client = new GraphQLClient(endpoint, {
     },
   },
 });
+
+export { gql };

@@ -8,10 +8,17 @@ export async function startDev(projects) {
     const project = projects[i];
     const port = BASE_PORT + i;
 
-    const child = spawn("vite", [], {
-      env: createViteEnv(project, process.env.NODE_ENV || "production"),
-      stdio: "inherit",
-    });
+    const child = spawn(
+      "vite",
+      ["--port", port.toString(), "--strictPort"],
+      {
+        env: {
+          ...process.env,
+          ...createViteEnv(project, "development"),
+        },
+        stdio: "inherit",
+      },
+    );
 
     child.on("close", (code) => {
       console.log(`${project.package} exited with code ${code}`);

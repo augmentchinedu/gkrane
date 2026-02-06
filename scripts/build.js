@@ -20,7 +20,10 @@ function runViteBuild(project) {
       cwd: process.cwd(),
       stdio: "inherit",
       shell: true,
-      env: createViteEnv(project, process.env.NODE_ENV || "production"),
+      env: {
+        ...process.env,
+        ...createViteEnv(project, process.env.NODE_ENV || "production"),
+      },
     });
 
     child.on("exit", (code) => {

@@ -1,0 +1,53 @@
+issues:
+  - description: "Fix route name collisions in router generator"
+    type: patch
+    done: false
+    commit: "fix(router): resolve route name collisions in generator"
+
+  - description: "Standardize page naming across packages"
+    type: patch
+    done: false
+    commit: "fix(naming): standardize page names across packages"
+
+  - description: "Improve Codex system prompt for consistent behavior"
+    type: patch
+    done: false
+    commit: "fix(codex): improve system prompt consistency"
+
+  - description: "Centralize layout component for main pages"
+    type: minor
+    done: false
+    commit: "feat(layout): centralize main page layout component"
+
+  - description: "Add user login page with proper state handling"
+    type: minor
+    done: false
+    commit: "feat(auth): add login page with managed auth state"
+
+  - description: "Optimize GraphQL subscriptions for multi-game updates"
+    type: minor
+    done: false
+    commit: "feat(graphql): optimize subscriptions for multi-game updates"
+
+  - description: "Implement sub-tabs for daily games, game history, and watch sections"
+    type: patch
+    done: false
+    commit: "fix(ui): add sub-tabs for daily, history, and watch sections"
+
+  - description: "Add automated tests for HTML games rendering"
+    type: minor
+    done: false
+    commit: "feat(tests): add automated tests for HTML game rendering"
+
+  - description: "Implement reusable Vue components for common UI elements"
+    type: minor
+    done: false
+    commit: "feat(ui): add reusable Vue UI components"
+
+  - description: "Prepare GKrane for versioned release with patch/ minor/ major tagging"
+    type: major
+    done: false
+    commit: |
+      feat(release)!: prepare GKrane for semantic versioned releases
+
+      BREAKING CHANGE: introduces enforced semantic commit and automated release workflow

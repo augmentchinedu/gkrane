@@ -1,0 +1,103 @@
+import fs from "fs";
+import path from "path";
+import prettier from "prettier";
+
+function getExportedNames(fileContent) {
+  const exports = {};
+  const nameMatch = fileContent.match(
+    /export\s+(?:const|let|var|function|class)?\s*name\s*=\s*["'`](.*?)["'`]/
+  );
+  const pathMatch = fileContent.match(
+    /export\s+(?:const|let|var)?\s*path\s*=\s*["'`](.*?)["'`]/
+  );
+  const metaMatch = fileContent.match(
+    /export\s+(?:const|let|var)?\s*meta\s*=\s*(\{[\s\S]*?\})/
+  );
+  const beforeEachMatch = fileContent.match(
+    /export\s+(?:function|const|let|var)?\s*beforeEach\s*=?\s*(.*)/
+  );
+
+  if (nameMatch) exports.name = nameMatch[1];
+  if (pathMatch) exports.path = pathMatch[1];
+  if (metaMatch) exports.meta = metaMatch[1].trim();
+  if (beforeEachMatch) exports.beforeEach = beforeEachMatch[1].trim();
+
+  return exports;
+}
+
+function scanFolder(dir, basePath = "") {
+  if (!fs.existsSync(dir)) return [];
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const routes = [];
+
+  entries.forEach((entry) => {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = path.join(basePath, entry.name);
+
+    if (entry.isDirectory()) {
+      const children = scanFolder(fullPath, path.join(basePath, entry.name));
+      if (children.length) {
+        routes.push(`{
+  path: "/${entry.name.toLowerCase()}",
+  children: [
+${children.join(",\n")}
+  ]
+}`);
+      }
+    } else if (entry.isFile() && entry.name.endsWith(".vue")) {
+      const content = fs.readFileSync(fullPath, "utf-8");
+      const exported = getExportedNames(content);
+
+      const fallbackName = entry.name.replace(/\.vue$/, "").toLowerCase();
+      const name = (exported.name || fallbackName).toLowerCase();
+      const routePath = (exported.path || fallbackName).toLowerCase();
+      const meta = exported.meta || "{}";
+      const beforeEach = exported.beforeEach || "undefined";
+
+      routes.push(`{
+  component: () => import("./${relativePath.replace(/\\/g, "/")}"),
+  name: "${name}",
+  path: "${routePath}",
+  meta: ${meta},
+  beforeEach: ${beforeEach}
+}`);
+    }
+  });
+
+  return routes;
+}
+
+// ✅ Make writeIndex async to await Prettier formatting
+// Write index.js for a folder with default export
+async function writeIndex(dir, routes) {
+  if (!routes.length) return;
+
+  let content = `export default [
+${routes.join(",\n")}
+];
+`;
+
+  try {
+    // Format with Prettier
+    content = await prettier.format(content, { parser: "babel" });
+  } catch (err) {
+    console.warn("Prettier formatting failed:", err);
+  }
+
+  fs.writeFileSync(path.join(dir, "index.js"), content, "utf-8");
+  console.log(`Generated nested index.js for ${dir}`);
+}
+
+// Main function
+export async function generateAllPages(projects) {
+  for (const project of projects) {
+    const projectPagesDir = path.join("packages", project.package, "pages");
+    const projectRoutes = scanFolder(projectPagesDir);
+    await writeIndex(projectPagesDir, projectRoutes);
+  }
+
+  const globalPagesDir = path.join("pages");
+  const globalRoutes = scanFolder(globalPagesDir);
+  await writeIndex(globalPagesDir, globalRoutes);
+}

@@ -1,0 +1,77 @@
+export default [
+  {
+    component: () => import("./Cart.vue"),
+    name: "cart",
+    path: "cart",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    component: () => import("./Explore.vue"),
+    name: "explore",
+    path: "explore",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    component: () => import("./Home.vue"),
+    name: "home",
+    path: "home",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    component: () => import("./Profile.vue"),
+    name: "profile",
+    path: "profile",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    component: () => import("./Shop.vue"),
+    name: "shop",
+    path: "shop",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    component: () => import("./Splash.vue"),
+    name: "splash",
+    path: "splash",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    component: () => import("./Wishlist.vue"),
+    name: "wishlist",
+    path: "wishlist",
+    meta: {},
+    beforeEach: undefined,
+  },
+  {
+    path: "/auth",
+    children: [
+      {
+        component: () => import("./auth/OnBoardOne.vue"),
+        name: "onboardone",
+        path: "onboardone",
+        meta: {},
+        beforeEach: undefined,
+      },
+      {
+        component: () => import("./auth/SignIn.vue"),
+        name: "signin",
+        path: "signin",
+        meta: {},
+        beforeEach: undefined,
+      },
+      {
+        component: () => import("./auth/SignUp.vue"),
+        name: "signup",
+        path: "signup",
+        meta: {},
+        beforeEach: undefined,
+      },
+    ],
+  },
+];

@@ -1,0 +1,50 @@
+name: Upload to Google Cloud Storage
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    # 🔑 These are injected BEFORE npm run build
+    env:
+      CI: true
+      NODE_ENV: production
+      GCS_BUCKET: ${{ secrets.GCS_BUCKET }}
+      VITE_PRODUCTION_GRAPHQL_ENDPOINT: /graphql
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+        # Example GitHub Actions step
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_ENV: development   # <- allows dev deps like vite to be installed
+
+      # 🔥 BUILD happens with env vars injected
+      - name: Build with env vars
+        run: |
+          echo "Using GraphQL endpoint: $VITE_PRODUCTION_GRAPHQL_ENDPOINT"
+          npm run build
+
+      # ☁️ Upload ONLY build output
+      - name: Upload build to GCS
+        run: |
+          gsutil -m rsync -r -d ./clients gs://great-unknown.appspot.com/clients

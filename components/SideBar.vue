@@ -1,0 +1,112 @@
+<!-- Sidebar.vue -->
+<template>
+  <template v-if="isVisible">
+    <!-- Sidebar -->
+    <aside
+      :class="[
+        'fixed md:static top-0 left-0 h-screen bg-red-800 text-white z-50 transition-all duration-300 flex flex-col',
+        sidebarWidthClass,
+      ]"
+    >
+      <!-- Header -->
+      <header v-if="isOpen" class="p-4 text-lg font-semibold">
+        Investor Property Dashboard
+      </header>
+
+      <!-- Menu -->
+      <ul v-if="isOpen" class="flex-1 mt-4 overflow-auto">
+        <li
+          v-for="(item, index) in menu"
+          :key="index"
+          class="p-2 hover:bg-gray-700 rounded cursor-pointer"
+        >
+          {{ item.label }}
+        </li>
+      </ul>
+
+      <!-- Footer -->
+      <footer
+        v-if="isOpen"
+        class="mt-auto flex items-center gap-3 p-4 bg-red-900"
+      >
+        <img src="https://i.pravatar.cc/100" class="w-10 h-10 rounded-full" />
+        <span class="flex-1 flex items-center h-full"> Christain Paul </span>
+      </footer>
+    </aside>
+
+    <!-- Overlay (mobile only) -->
+    <div
+      v-if="isOpen && isMobile"
+      class="fixed inset-0 bg-black/50 z-40"
+      @click="closeSidebar"
+    ></div>
+  </template>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted, watch } from "vue";
+import { useStore } from "@/store";
+import { useEventBus } from "@vueuse/core";
+import { useRoute } from "vue-router";
+
+const { app } = useStore();
+const route = useRoute();
+const bus = useEventBus("nav");
+
+// Sidebar state
+const isOpen = ref(false);
+const isMobile = ref(false);
+
+// Menu data
+const menu = computed(() => app.content.navigation.sidebar.left);
+
+// Visibility (hard gate)
+const isVisible = computed(() => {
+  if (route.path == "/auth/signin" || route.path == "/auth/signup") {
+    return false;
+  } else return app.content.navigation.sidebar.left.length > 0;
+});
+
+// Force close when sidebar becomes invisible (prevents flash)
+watch(isVisible, (visible) => {
+  if (!visible) {
+    isOpen.value = false;
+  }
+});
+
+console.log(route.path);
+
+// Compute sidebar width/translate classes
+const sidebarWidthClass = computed(() => {
+  if (isMobile.value) {
+    return isOpen.value ? "w-64 translate-x-0" : "w-64 -translate-x-full";
+  }
+  return isOpen.value ? "w-64" : "w-16";
+});
+
+// Toggle helpers
+function closeSidebar() {
+  isOpen.value = false;
+}
+
+bus.on(() => {
+  isOpen.value = !isOpen.value;
+});
+
+// Detect mobile
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768;
+  if (!isMobile.value) {
+    isOpen.value = true; // always open on desktop
+  }
+};
+
+onMounted(() => {
+  checkMobile();
+  window.addEventListener("resize", checkMobile);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", checkMobile);
+});
+</script>

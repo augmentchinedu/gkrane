@@ -38,7 +38,7 @@ async function bootstrap() {
   app.component("Input", Input);
   app.component("Button", Button);
 
-  initTheme();
+  initTheme(import.meta.env.THEME);
 
   await router.isReady();
 

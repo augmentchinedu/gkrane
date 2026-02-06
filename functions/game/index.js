@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import { createTopDownCamera } from "./camera/topDownCamera";
+import { createTopDownCamera } from "../camera/topDownCamera";
 
-import { frameCamera } from "./utility";
+import { frameCamera } from "../utility";
 
 let scene, camera, renderer, controls;
 
@@ -60,28 +60,28 @@ export async function createGame(gameID, container) {
   // Chess
   if (gameID === "chess") {
     // Import board and pieces dynamically
-    const chessModule = await import("./chess/index.js");
+    const chessModule = await import("../chess/index.js");
     boardObject = chessModule.createChessBoard(scene);
 
     // Dynamically import pieces
-    const piecesModule = await import("./chess/factory.js");
+    const piecesModule = await import("../chess/factory.js");
     piecesModule.createChessPieces(boardObject);
   }
 
   // Ludo
   if (gameID === "ludo") {
-    const ludoModule = await import("./ludo/index.js");
+    const ludoModule = await import("../ludo/index.js");
     boardObject = ludoModule.createLudoBoard(scene);
 
-    const piecesModule = await import("./ludo/factory.js");
+    const piecesModule = await import("../ludo/factory.js");
     piecesModule.createLudoPieces(boardObject);
   }
 
   // Ludo
   if (gameID === "monopoly") {
-    const monopolyModule = await import("./monopoly/index.js");
+    const monopolyModule = await import("../monopoly/index.js");
     boardObject = monopolyModule.createMonopolyBoard(scene);
-    // const piecesModule = await import("./ludoPieces.js");
+    // const piecesModule = await import("../ludoPieces.js");
     // piecesModule.createLudoPieces(boardObject);
   }
 

@@ -1,3 +1,5 @@
+const themes={}
+
 // Apply theme function
 function applyTheme(themeName, isDark = false) {
   const theme = isDark

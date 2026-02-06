@@ -1,0 +1,9 @@
+{
+  "name": "Unknown Core",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Unknown Core Server"
+    }
+  }
+}

@@ -12,7 +12,18 @@ const env = process.env.NODE_ENV;
 await Promise.all(clients.map((project) => create(project, "client")));
 await Promise.all(apps.map((project) => create(project, "app")));
 
-const projects = [...apps, ...clients].sort((a, b) =>
+// 🔹 add `type` to each project
+const typedClients = clients.map((project) => ({
+  ...project,
+  type: "client",
+}));
+
+const typedApps = apps.map((project) => ({
+  ...project,
+  type: "app",
+}));
+
+const projects = [...typedApps, ...typedClients].sort((a, b) =>
   a.package.localeCompare(b.package),
 );
 

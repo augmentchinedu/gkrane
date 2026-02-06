@@ -5,16 +5,16 @@ import prettier from "prettier";
 function getExportedNames(fileContent) {
   const exports = {};
   const nameMatch = fileContent.match(
-    /export\s+(?:const|let|var|function|class)?\s*name\s*=\s*["'`](.*?)["'`]/
+    /export\s+(?:const|let|var|function|class)?\s*name\s*=\s*["'`](.*?)["'`]/,
   );
   const pathMatch = fileContent.match(
-    /export\s+(?:const|let|var)?\s*path\s*=\s*["'`](.*?)["'`]/
+    /export\s+(?:const|let|var)?\s*path\s*=\s*["'`](.*?)["'`]/,
   );
   const metaMatch = fileContent.match(
-    /export\s+(?:const|let|var)?\s*meta\s*=\s*(\{[\s\S]*?\})/
+    /export\s+(?:const|let|var)?\s*meta\s*=\s*(\{[\s\S]*?\})/,
   );
   const beforeEachMatch = fileContent.match(
-    /export\s+(?:function|const|let|var)?\s*beforeEach\s*=?\s*(.*)/
+    /export\s+(?:function|const|let|var)?\s*beforeEach\s*=?\s*(.*)/,
   );
 
   if (nameMatch) exports.name = nameMatch[1];
@@ -90,9 +90,14 @@ ${routes.join(",\n")}
 }
 
 // Main function
-export async function generateAllPages(projects) {
+export async function generateAllPages(projects, type) {
   for (const project of projects) {
-    const projectPagesDir = path.join("packages", project.package, "pages");
+    const projectPagesDir = path.join(
+      "packages",
+      project.type + "s",
+      project.package,
+      "pages",
+    );
     const projectRoutes = scanFolder(projectPagesDir);
     await writeIndex(projectPagesDir, projectRoutes);
   }

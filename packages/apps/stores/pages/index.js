@@ -13,4 +13,11 @@ export default [
     meta: {},
     beforeEach: undefined,
   },
+  {
+    component: () => import("./Create.vue"),
+    name: "create",
+    path: "create",
+    meta: {},
+    beforeEach: undefined,
+  },
 ];

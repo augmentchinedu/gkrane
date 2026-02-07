@@ -7,7 +7,9 @@
       class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md"
     >
       <div class="flex items-center p-4 pb-2 justify-between max-w-md mx-auto">
-        <div class="text-primary flex size-12 shrink-0 items-center justify-start">
+        <div
+          class="text-primary flex size-12 shrink-0 items-center justify-start"
+        >
           <Icon icon="mdi:sort" class="text-[28px]" />
         </div>
 
@@ -40,7 +42,9 @@
       <!-- Search -->
       <div class="pb-6">
         <label class="flex flex-col min-w-40 h-12 w-full">
-          <div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+          <div
+            class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm"
+          >
             <div
               class="text-primary flex border-none bg-white dark:bg-[#2f2348] items-center justify-center pl-4 rounded-l-xl"
             >
@@ -59,6 +63,7 @@
       <div class="mb-6">
         <button
           class="create-store-card w-full rounded-2xl p-5 flex items-center justify-between group active:scale-[0.98] transition-all"
+          @click="$router.push('/create')"
         >
           <div class="flex items-center gap-4">
             <div
@@ -88,26 +93,53 @@
       <div class="grid grid-cols-2 gap-4">
         <div
           v-for="(item, i) in [
-            { title: 'Jewelry', subtitle: 'Fine collections', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAQSzJTKp9s-ZkHW273GN0LCQ_78WFe-QaG-No9VkYWPj5lEBdigdbbc4KYXi4AqANkpwmMVtujeP7MmrVpVKRpclCnFm49W28QaghaB1wSyUcNRzBBPk7iqjTzY936-mNe3JfS_r6ni8nf17v-huHPDoKwdJp10eGXcBIkgrSSn79DVmsnnJapkg5QhVwJqNfK6tyKLrykwx6vtJYwB579YNTDQxh88DNUaMcf-neqrNsqPaRRu95VBSIzDXS-qFdOYq4htyp_9U' },
-            { title: 'Furniture', subtitle: 'Modern living', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAp0eyf0zJ8ampzu3uFuORrIjXn0vdgYr_OSsxpSvEFARzokPbBWRgGLud3nfjh0jVVSjQkt5w7A5jPP9kOY21pPgzvQkigheFwqcW3BCEse3T-sTX2_zCBpkQkiOsh8LpLVap0PQ2KAGi2FqPCoE365CpiwChWTYEHF3V45dSYN2pBjLiu_Rptz_XlRJhF2Qnb6AA7bxCSdWuLYhmW_QoQUw_0DXIy78sYxPWClHNF2pIUN0Qxy_aBycA6qAFPEjx4c6opMDoMXuU' },
-            { title: 'Skincare', subtitle: 'Organic glow', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDKo8G-mgBqsJa551uvAbq3T7ZBoAlwxBWGsoZ6YNKiBa6WTIv_ze_7OXIvISoFjKCeLCWVCNYvgNTP0dVlljfBnVCEi7ORHWLR1P58aIxT51fxUtPQaAVjuqE0bVDH66kU_pXjpDrkKccfVR0NVTC0GUvfPcNPYyp2TATaftbH22ZAcMJ-6M0g90Cacj3adr3IJ0Hqjq81x1B5Y3vZw96o9T10p47RUsmEzp6CQ2ATMuh0TcfGcYEBgV8rfd_6-g0XpV8ktUoJgJg' },
-            { title: 'Drinks', subtitle: 'Premium spirits', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQjvLLNrKsW9zXgcZMAnLefPIe03EgcJymXava-n46rtoEsx9GMhtfyWxs-wax2dy-Fn4A8qtyRZAoqsFo8TQuW8vnS3JMnnpsKH7j0F5wm8wbSAJrfPWwQvmkkH2ZrEEQOt2TElsfFwLIqLEDJXUT09Vc7ewamlk2sCoLkFj2v8u1kbb-WrfaRGWnMVM4BNhCQzh2bUrPgTs2P2GcgBj8rf_809ZecZbvAOWzymRQHPdH54jWozb5pp0c4AwRcBOsq1UhlF_P9Us' }
-            ,{ title: 'Fashion', subtitle: 'New trends', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBzbPq0Lu5IbFhGGh8eg_L5xmAjJSeeszlJpWDvbf1KyYCF6-36hAPfYaMPM_nWL9FjYOQxrf5RDTf7mJ_DTnxKyI5cx3uvJm807o4LQVtwOmxCiwMuOYL2KsOkx_Y5IygIPBO7gAuab40URLPf8Dbz4lxEeC--hRvcGW_Ic9EkcXI71G5TvBYk2vRD8lMApfAgHiWvyORA-BtGxKasDA6iqctPLE9j-He2d4axmCJaelMEQ2Er-BLvJPfBU0fp24tNXfs9BAk7whA' }
-            ,{ title: 'Gadgets', subtitle: ' Smart tech', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB82HPbSXjnMPVOs8hvspEKrIvD_jWSrDFlDGxvZMIOhj8wKKkmE08u7v_QslDjV4_KPkGXFGBvzajX7g1WV4MeHArkD9_A91FXw8GtzrgAJCLGELm5E2YHyDg5sW1Rt5PRcZtZacFML5iC80kiLYU6C8yHxCdfJWHp2F7hXDiCCC5Q3QFaml4gWyVTzD3JUzPT-hTRBQY6D09xA-SfKUzWC8mUMRrpugsDkLr2dwNED-sxWYg8JeaUw-yAAan1b5n_XagXyCPh6s0' }
+            {
+              title: 'Jewelry',
+              subtitle: 'Fine collections',
+              img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAQSzJTKp9s-ZkHW273GN0LCQ_78WFe-QaG-No9VkYWPj5lEBdigdbbc4KYXi4AqANkpwmMVtujeP7MmrVpVKRpclCnFm49W28QaghaB1wSyUcNRzBBPk7iqjTzY936-mNe3JfS_r6ni8nf17v-huHPDoKwdJp10eGXcBIkgrSSn79DVmsnnJapkg5QhVwJqNfK6tyKLrykwx6vtJYwB579YNTDQxh88DNUaMcf-neqrNsqPaRRu95VBSIzDXS-qFdOYq4htyp_9U',
+            },
+            {
+              title: 'Furniture',
+              subtitle: 'Modern living',
+              img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAp0eyf0zJ8ampzu3uFuORrIjXn0vdgYr_OSsxpSvEFARzokPbBWRgGLud3nfjh0jVVSjQkt5w7A5jPP9kOY21pPgzvQkigheFwqcW3BCEse3T-sTX2_zCBpkQkiOsh8LpLVap0PQ2KAGi2FqPCoE365CpiwChWTYEHF3V45dSYN2pBjLiu_Rptz_XlRJhF2Qnb6AA7bxCSdWuLYhmW_QoQUw_0DXIy78sYxPWClHNF2pIUN0Qxy_aBycA6qAFPEjx4c6opMDoMXuU',
+            },
+            {
+              title: 'Skincare',
+              subtitle: 'Organic glow',
+              img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDKo8G-mgBqsJa551uvAbq3T7ZBoAlwxBWGsoZ6YNKiBa6WTIv_ze_7OXIvISoFjKCeLCWVCNYvgNTP0dVlljfBnVCEi7ORHWLR1P58aIxT51fxUtPQaAVjuqE0bVDH66kU_pXjpDrkKccfVR0NVTC0GUvfPcNPYyp2TATaftbH22ZAcMJ-6M0g90Cacj3adr3IJ0Hqjq81x1B5Y3vZw96o9T10p47RUsmEzp6CQ2ATMuh0TcfGcYEBgV8rfd_6-g0XpV8ktUoJgJg',
+            },
+            {
+              title: 'Drinks',
+              subtitle: 'Premium spirits',
+              img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQjvLLNrKsW9zXgcZMAnLefPIe03EgcJymXava-n46rtoEsx9GMhtfyWxs-wax2dy-Fn4A8qtyRZAoqsFo8TQuW8vnS3JMnnpsKH7j0F5wm8wbSAJrfPWwQvmkkH2ZrEEQOt2TElsfFwLIqLEDJXUT09Vc7ewamlk2sCoLkFj2v8u1kbb-WrfaRGWnMVM4BNhCQzh2bUrPgTs2P2GcgBj8rf_809ZecZbvAOWzymRQHPdH54jWozb5pp0c4AwRcBOsq1UhlF_P9Us',
+            },
+            {
+              title: 'Fashion',
+              subtitle: 'New trends',
+              img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBzbPq0Lu5IbFhGGh8eg_L5xmAjJSeeszlJpWDvbf1KyYCF6-36hAPfYaMPM_nWL9FjYOQxrf5RDTf7mJ_DTnxKyI5cx3uvJm807o4LQVtwOmxCiwMuOYL2KsOkx_Y5IygIPBO7gAuab40URLPf8Dbz4lxEeC--hRvcGW_Ic9EkcXI71G5TvBYk2vRD8lMApfAgHiWvyORA-BtGxKasDA6iqctPLE9j-He2d4axmCJaelMEQ2Er-BLvJPfBU0fp24tNXfs9BAk7whA',
+            },
+            {
+              title: 'Gadgets',
+              subtitle: ' Smart tech',
+              img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB82HPbSXjnMPVOs8hvspEKrIvD_jWSrDFlDGxvZMIOhj8wKKkmE08u7v_QslDjV4_KPkGXFGBvzajX7g1WV4MeHArkD9_A91FXw8GtzrgAJCLGELm5E2YHyDg5sW1Rt5PRcZtZacFML5iC80kiLYU6C8yHxCdfJWHp2F7hXDiCCC5Q3QFaml4gWyVTzD3JUzPT-hTRBQY6D09xA-SfKUzWC8mUMRrpugsDkLr2dwNED-sxWYg8JeaUw-yAAan1b5n_XagXyCPh6s0',
+            },
           ]"
           :key="i"
-            @click="goToCategory(item.title)"
-
+          @click="goToCategory(item.title)"
           class="relative group cursor-pointer aspect-[4/5] rounded-2xl overflow-hidden shadow-lg transition-transform active:scale-[0.96]"
         >
           <div
             class="absolute inset-0 bg-cover bg-center"
             :style="{ backgroundImage: `url(${item.img})` }"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+          />
           <div class="absolute bottom-0 left-0 right-0 p-3 glass-panel">
             <p class="text-white text-lg font-bold">{{ item.title }}</p>
-            <p class="text-white/70 text-[10px] uppercase tracking-wider font-semibold">
+            <p
+              class="text-white/70 text-[10px] uppercase tracking-wider font-semibold"
+            >
               {{ item.subtitle }}
             </p>
           </div>
@@ -144,24 +176,19 @@
   </body>
 </template>
 
-
 <script setup>
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
 const toRoute = (title) => {
-  return title
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-");
+  return title.toLowerCase().trim().replace(/\s+/g, "-");
 };
 
 const goToCategory = (title) => {
   router.push(`/${toRoute(title)}`);
 };
 </script>
-
 
 <style scoped>
 .glass-panel {

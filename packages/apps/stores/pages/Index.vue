@@ -123,6 +123,11 @@
               subtitle: ' Smart tech',
               img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB82HPbSXjnMPVOs8hvspEKrIvD_jWSrDFlDGxvZMIOhj8wKKkmE08u7v_QslDjV4_KPkGXFGBvzajX7g1WV4MeHArkD9_A91FXw8GtzrgAJCLGELm5E2YHyDg5sW1Rt5PRcZtZacFML5iC80kiLYU6C8yHxCdfJWHp2F7hXDiCCC5Q3QFaml4gWyVTzD3JUzPT-hTRBQY6D09xA-SfKUzWC8mUMRrpugsDkLr2dwNED-sxWYg8JeaUw-yAAan1b5n_XagXyCPh6s0',
             },
+            {
+              title: 'Hairs',
+              subtitle: 'Styling & Care',
+              img: 'https://img.grouponcdn.com/seocms/43RYZ77uFqFrveh7Zquw2jRVtqYK/hero_png-600x390',
+            },
           ]"
           :key="i"
           @click="goToCategory(item.title)"
@@ -191,16 +196,15 @@ const goToCategory = (title) => {
 </script>
 
 <style scoped>
-.glass-panel {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.ios-tab-bar {
-  background: rgba(22, 16, 34, 0.85);
+.create-store-card {
+  background: linear-gradient(
+    135deg,
+    rgba(91, 19, 236, 0.4),
+    rgba(91, 19, 236, 0.1)
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(91, 13, 236, 0.3);
 }
 </style>

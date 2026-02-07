@@ -6,7 +6,7 @@
     <div
       class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md"
     >
-      <div class="flex items-center p-4 pb-2 justify-between max-w-md mx-auto">
+      <div class="flex items-center p-4 pb-2 justify-between mx-auto">
         <Back />
         <h2
           class="text-black dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center"
@@ -24,7 +24,7 @@
     </div>
 
     <!-- Content -->
-    <main class="pt-20 pb-28 px-4 max-w-md mx-auto">
+    <main class="pt-20 pb-28 px-4 mx-auto">
       <div class="flex items-center justify-between mb-6">
         <h1
           class="text-black dark:text-white tracking-tight text-[32px] font-bold leading-none"
@@ -40,7 +40,7 @@
       </div>
 
       <!-- Stores Grid -->
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div
           v-for="store in stores"
           :key="store.name"
@@ -95,7 +95,7 @@
     <nav
       class="fixed bottom-0 left-0 right-0 z-50 ios-tab-bar border-t border-white/10 px-6 pb-8 pt-3"
     >
-      <div class="flex justify-between items-center max-w-md mx-auto">
+      <div class="flex justify-between items-center mx-auto">
         <button
           class="flex flex-col items-center gap-1 text-gray-500 active:text-primary transition-colors"
         >

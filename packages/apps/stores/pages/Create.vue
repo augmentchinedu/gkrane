@@ -6,12 +6,9 @@
     <header
       class="sticky top-0 z-50 pt-12 pb-4 px-4 bg-background-dark/60 backdrop-blur-md border-b border-primary/10"
     >
-      <div class="flex items-center justify-between max-w-md mx-auto">
-        <button
-          class="w-10 h-10 flex items-center justify-center rounded-full glass-input"
-        >
-          <Icon icon="mdi:chevron-left" class="text-white w-6 h-6" />
-        </button>
+      <div class="flex items-center justify-between mx-auto">
+        <Back />
+
         <div class="flex flex-col items-center">
           <h1 class="text-lg font-bold tracking-tight">Create Your Store</h1>
           <span
@@ -23,7 +20,7 @@
       </div>
 
       <!-- Progress Indicator -->
-      <div class="max-w-md mx-auto mt-6 px-4">
+      <div class="mx-auto mt-6 px-4">
         <div
           class="flex gap-2 h-1.5 w-full bg-primary/20 rounded-full overflow-hidden"
         >
@@ -34,7 +31,7 @@
       </div>
     </header>
 
-    <main class="flex-1 max-w-md mx-auto w-full px-6 py-8">
+    <main class="flex-1 mx-auto w-full px-6 py-8">
       <div class="mb-8 space-y-2">
         <h2 class="text-3xl font-extrabold text-white">Store Details</h2>
         <p class="text-slate-400 text-sm">
@@ -140,7 +137,7 @@
     <div
       class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent"
     >
-      <div class="max-w-md mx-auto">
+      <div class="mx-auto">
         <button
           class="w-full h-16 bg-primary text-black font-extrabold text-lg rounded-xl shadow-[0_8px_30px_rgb(19,236,19,0.3)] hover:opacity-90 transition-opacity flex items-center justify-center gap-2 active:scale-[0.98]"
         >

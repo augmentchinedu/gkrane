@@ -2,3 +2,171 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant light (&:where(:not(.dark), :not(.dark) *));
+
+/* ===============================
+   THEME VARIABLES
+   =============================== */
+@theme {
+  /* Light Mode Colors */
+  --color-background: oklch(100% 0 0);
+  --color-foreground: oklch(0% 0 0);
+  --color-primary: oklch(50% 0.25 280);
+  --color-primary-foreground: oklch(100% 0 0);
+  --color-secondary: oklch(96% 0.02 280);
+  --color-secondary-foreground: oklch(20% 0 0);
+  --color-muted: oklch(96% 0.01 280);
+  --color-muted-foreground: oklch(45% 0.01 280);
+  --color-accent: oklch(96% 0.02 280);
+  --color-accent-foreground: oklch(20% 0 0);
+  --color-border: oklch(90% 0.01 280);
+  --color-input: oklch(90% 0.01 280);
+  --color-ring: oklch(50% 0.25 280);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(0% 0 0);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: oklch(15% 0.02 280);
+    --color-foreground: oklch(98% 0 0);
+    --color-primary: oklch(65% 0.22 280);
+    --color-primary-foreground: oklch(100% 0 0);
+    --color-secondary: oklch(20% 0.02 280);
+    --color-secondary-foreground: oklch(98% 0 0);
+    --color-muted: oklch(20% 0.02 280);
+    --color-muted-foreground: oklch(65% 0.01 280);
+    --color-accent: oklch(20% 0.02 280);
+    --color-accent-foreground: oklch(98% 0 0);
+    --color-border: oklch(25% 0.02 280);
+    --color-input: oklch(25% 0.02 280);
+    --color-ring: oklch(65% 0.22 280);
+    --color-card: oklch(15% 0.02 280);
+    --color-card-foreground: oklch(98% 0 0);
+  }
+}
+
+/* Manual Dark Mode Class */
+.dark {
+  --color-background: oklch(15% 0.02 280);
+  --color-foreground: oklch(98% 0 0);
+  --color-primary: oklch(65% 0.22 280);
+  --color-primary-foreground: oklch(100% 0 0);
+  --color-secondary: oklch(20% 0.02 280);
+  --color-secondary-foreground: oklch(98% 0 0);
+  --color-muted: oklch(20% 0.02 280);
+  --color-muted-foreground: oklch(65% 0.01 280);
+  --color-accent: oklch(20% 0.02 280);
+  --color-accent-foreground: oklch(98% 0 0);
+  --color-border: oklch(25% 0.02 280);
+  --color-input: oklch(25% 0.02 280);
+  --color-ring: oklch(65% 0.22 280);
+  --color-card: oklch(15% 0.02 280);
+  --color-card-foreground: oklch(98% 0 0);
+}
+
+/* ===============================
+   BASE STYLES
+   =============================== */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+}
+
+/* ===============================
+   COMPONENT STYLES
+   =============================== */
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3;
+  }
+
+  .btn-md {
+    @apply h-10 px-4 py-2;
+  }
+
+  .btn-lg {
+    @apply h-11 px-8;
+  }
+
+  /* Cards */
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+
+  /* Inputs */
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Textarea */
+  .textarea {
+    @apply flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  .badge-primary {
+    @apply border-transparent bg-primary text-primary-foreground hover:bg-primary/80;
+  }
+
+  .badge-secondary {
+    @apply border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .badge-outline {
+    @apply text-foreground;
+  }
+
+  /* Alerts */
+  .alert {
+    @apply relative w-full rounded-lg border p-4;
+  }
+
+  .alert-destructive {
+    @apply border-red-500/50 text-red-600 dark:text-red-400;
+  }
+
+  /* Separators */
+  .separator {
+    @apply shrink-0 bg-border h-[1px] w-full;
+  }
+}

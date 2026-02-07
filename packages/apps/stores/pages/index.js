@@ -6,4 +6,11 @@ export default [
     meta: {},
     beforeEach: undefined,
   },
+  {
+    component: () => import("./Stores.vue"),
+    name: "stores",
+    path: ":type",
+    meta: {},
+    beforeEach: undefined,
+  },
 ];

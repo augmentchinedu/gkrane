@@ -2,6 +2,26 @@ import fs from "fs";
 import path from "path";
 import prettier from "prettier";
 
+function getExistingComponents(indexFile) {
+  if (!fs.existsSync(indexFile)) return new Set();
+
+  const content = fs.readFileSync(indexFile, "utf-8");
+  const matches = [
+    ...content.matchAll(/component:\s*\(\)\s*=>\s*import\(["'`](.*?)["'`]\)/g),
+  ];
+
+  return new Set(matches.map((m) => m[1]));
+}
+
+function getExistingPaths(indexFile) {
+  if (!fs.existsSync(indexFile)) return new Set();
+
+  const content = fs.readFileSync(indexFile, "utf-8");
+  const matches = [...content.matchAll(/path:\s*["'`](.*?)["'`]/g)];
+
+  return new Set(matches.map((m) => m[1]));
+}
+
 function getExportedNames(fileContent) {
   const exports = {};
   const nameMatch = fileContent.match(
@@ -73,19 +93,57 @@ ${children.join(",\n")}
 async function writeIndex(dir, routes) {
   if (!routes.length) return;
 
-  let content = `export default [
-${routes.join(",\n")}
+  const indexFile = path.join(dir, "index.js");
+
+  const existingPaths = getExistingPaths(indexFile);
+  const existingComponents = getExistingComponents(indexFile);
+
+  const newRoutes = routes.filter((route) => {
+    const pathMatch = route.match(/path:\s*["'`](.*?)["'`]/);
+    const componentMatch = route.match(/import\(["'`](.*?)["'`]\)/);
+
+    if (!pathMatch || !componentMatch) return true;
+
+    const routePath = pathMatch[1];
+    const componentPath = componentMatch[1];
+
+    // 🚫 Skip if path OR component already exists
+    if (existingPaths.has(routePath)) return false;
+    if (existingComponents.has(componentPath)) return false;
+
+    return true;
+  });
+
+  if (!newRoutes.length) return;
+
+  let content;
+
+  if (fs.existsSync(indexFile)) {
+    const existing = fs
+      .readFileSync(indexFile, "utf-8")
+      .replace(/,\s*\]/, "\n]") // 🔥 remove trailing comma safely
+      .trim();
+
+    content = existing.replace(
+      /\]\s*;?$/,
+      `${existing.includes("[") && existing.match(/\[\s*\]/) ? "" : ","}
+${newRoutes.join(",\n")}
+]`,
+    );
+  } else {
+    content = `export default [
+${newRoutes.join(",\n")}
 ];
 `;
+  }
 
   try {
-    // Format with Prettier
     content = await prettier.format(content, { parser: "babel" });
   } catch (err) {
     console.warn("Prettier formatting failed:", err);
   }
 
-  fs.writeFileSync(path.join(dir, "index.js"), content, "utf-8");
+  fs.writeFileSync(indexFile, content, "utf-8");
 }
 
 // Main function

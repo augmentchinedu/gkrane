@@ -6,16 +6,14 @@ export function useStores() {
     const { user } = useStore();
 
     store.type = store.type.toLowerCase();
-    store.creator = user.id;
 
     try {
       const mutation = gql`
         mutation createStore($input: CreateStoreInput!) {
           createStore(input: $input) {
-            store {
-              id
-              name
-            }
+            id
+            name
+            handle
           }
         }
       `;
@@ -24,8 +22,7 @@ export function useStores() {
         input: store,
       });
 
-      console.log("Store created:", response.create);
-      return response.create;
+      return response.createStore;
     } catch (error) {
       console.error("Error creating store:", error);
       throw error;

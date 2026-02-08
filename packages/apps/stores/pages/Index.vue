@@ -63,7 +63,7 @@
       <div class="mb-6">
         <button
           class="create-store-card w-full rounded-2xl p-5 flex items-center justify-between group active:scale-[0.98] transition-all"
-          @click="$router.push('/create')"
+          @click="$router.push(!app.isAuthenticated?'/auth/signin':'/create')"
         >
           <div class="flex items-center gap-4">
             <div
@@ -76,9 +76,10 @@
               <h3 class="text-white text-lg font-bold leading-none mb-1">
                 Create Your Store
               </h3>
-              <p class="text-white/60 text-xs font-medium">
-                Launch your storefront today
-              </p>
+<p class="text-white/60 text-xs font-medium capitalize">
+  <span v-if="!app.isAuthenticated">Sign in to </span>
+  <span>launch your storefront today</span>
+</p>
             </div>
           </div>
 
@@ -183,8 +184,10 @@
 
 <script setup>
 import { useRouter } from "vue-router";
+import {useStore} from '@/store'
 
 const router = useRouter();
+const {app} = useStore()
 
 const toRoute = (title) => {
   return title.toLowerCase().trim().replace(/\s+/g, "-");

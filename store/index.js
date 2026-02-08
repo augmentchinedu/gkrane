@@ -4,6 +4,7 @@ import { client, gql } from "@/gql/index.js";
 import { USER_BASE_FIELDS } from "@/gql/queries/user.base.js";
 import { SIGNUP, SIGNIN } from "@/gql/mutations/auth.js";
 import { useGamer } from "./gamer/index.js";
+import { useStores } from "./stores/index.js";
 import { useApp } from "./app/index.js";
 
 export const useStore = defineStore("store", () => {
@@ -12,6 +13,7 @@ export const useStore = defineStore("store", () => {
   const user = reactive({});
   const game = reactive({});
   const gamer = useGamer(game);
+  const stores = useStores();
 
   /* ---------------- INIT ---------------- */
   async function instantiate() {
@@ -149,6 +151,7 @@ export const useStore = defineStore("store", () => {
     user,
     gamer,
     game,
+    stores,
     signup,
     signin,
     signout,

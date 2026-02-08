@@ -151,41 +151,5 @@ const stores = [
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuADiZoNAvY0_NV3cQKzRHskzp1_bI9Le_wvjsWv9g06ffmFrlpNO4DXwm7dEVK5LrS_1RcOzTb3gfO3pOSwpA1UnR5Z5khnWpePU3020YybD_WhWFAUfIj8eSTpVvLweCFQOv5KpVYFN4_5PYGA4iYdl0mMUjUFXnCpLZ20rr7VE7JQGSY5YmNR-BNQ7AhH9q-_eItJzwhBDCdWAT-NAPtdWUrML1o9P69V8RvPOrtCHhbzK88ImO1t-WFmjC_USo71DYqAs0VAqJY",
   },
-  {
-    name: "Pixel Point",
-    products: "3,420",
-    rating: 4.9,
-    location: "Global",
-    locationIcon: "mdi:earth",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA_NYtRngb5CiOw_31E-i6eVzRwB0mQmuAMxwcClJ9wYUgSUXZRZTq-Sye8ksTHAsbBPlyQ8CIE79a_HQ8v7ZQ9vKLgyR4RIT0NCjWspsEfS2EIl6Kyukv2faA5SwX8H3_nu7OJqrkNTTSGhpfXjUse0mBGiFMooiFQ8ocAcZU6AnyrTU5GlBrL6QJDAmB_d3tSAov8TwIKAMS5raZ1BRTOJx6zeiYRMhfyFuqNjuPdurClXhGbaXdgMD335LcV0PSiHw50Y3ysokE",
-  },
-  {
-    name: "Audio Arc",
-    products: "540",
-    rating: 4.6,
-    location: "Berlin, DE",
-    locationIcon: "mdi:map-marker",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD4xcNtS1nbeqkCz9R4TGOnowYhtBc0GGESJ5PljrX8FZlhhjKLl_-nOyBA-NCC_7P43X-NvccghX77U8iL5gvyS0hQkDsBHlm_wezQUOajEzbIPYFPs0tD6NKeWDRHEiFjd-vqL8hqPKx68BMn3RqdltcijCKPc694ZHP3ra5P2VjF7axOBhB3CGpEKu0J0AQCp8djDF9qwrtLUNot3FJ3GvjtS-f6w7Q48hDsqWyKVvzjv_P6erMm5VwqH79115gp-KnBqvZHof0",
-  },
-  {
-    name: "Future Flow",
-    products: "2,100",
-    rating: 4.5,
-    location: "Global",
-    locationIcon: "mdi:earth",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB6JaHSD4S_PE4E59mSmFqgQHsTdKlrh9glXOiBFoMsIt_Zsrb8koFNx0aCv7b_nWH8QXw6jr_Xc00WnWlp_xuAhUJgSFh61vPdRKCtrufVwmZple264chG7mstqMsd_WQfbmb5TWyLt8HrXluZSkVWkyN--XAjnNte--MwUg0WC9rhZR36iqCDS6cmeuPfwED4XNLBpHr2EmXW_tRXp0AUgCTa9VuPw6FbIPt6ddPBRJH5Esqi6a7R_p9Va9bPaDnzBCfceAdXzDo",
-  },
-  {
-    name: "Nova Store",
-    products: "1,850",
-    rating: 4.8,
-    location: "Tokyo, JP",
-    locationIcon: "mdi:map-marker",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAQzMZhe97_eVq4F0Qyx9HNB1SQ8OJywu98aDDK3knmyzXfz9quUbWBq-3AyEgtedrUc6JtdQYAwzVMkvFNGOruEE33kwz_MiIWYbz1CpWjFlUHugO590C7REEK2UoymTysCB4EgS0nnCksznu1vsCJ-7oo_pmMCMZKzAPYw35-JpCqExUv0qKEfTMzruF0dy0q-ugEoGo_EIFWjb9MqsEeMAquUUqsUDQYFp3dih4nk-5JUtJ4oFUAb5ReK0OwvU8I-wc0fGQ4_Ac",
-  },
 ];
 </script>

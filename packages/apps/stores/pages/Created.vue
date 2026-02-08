@@ -2,9 +2,7 @@
     <main class="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col">
         <!-- Top Navigation -->
         <div class="flex items-center bg-transparent p-4 pb-2 justify-between">
-            <div class="flex size-12 shrink-0 items-center justify-start">
-                <Icon icon="mdi:close" class="text-white text-2xl cursor-pointer hover:opacity-70 transition" />
-            </div>
+            <Back />
 
             <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
                 Store Created

@@ -60,6 +60,7 @@ export const useStore = defineStore("store", () => {
         `);
 
         Object.assign(user, userData);
+        console.log("User authenticated:", user)
       }
 
       // ✅ Dynamically load game package

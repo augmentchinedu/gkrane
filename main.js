@@ -4,6 +4,9 @@ import "./main.css";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
+
+import { pluralize } from "@/plugins";
+
 import App from "./App.vue";
 
 import { createAppRouter } from "./router";
@@ -22,6 +25,8 @@ import { initTheme } from "./scripts/theme.js";
 async function bootstrap() {
   // 1️⃣ Create app & Pinia
   const app = createApp(App);
+  app.use(pluralize);
+
   const pinia = createPinia();
   app.use(pinia);
 

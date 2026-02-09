@@ -37,6 +37,7 @@ export const useStore = defineStore("store", () => {
               name
               username
               type
+              package
               content
             }
           }
@@ -44,9 +45,11 @@ export const useStore = defineStore("store", () => {
         variables,
       );
       app.name = clientData.username;
+      app.package = clientData.package;
       app.content = reactive(clientData.content || {});
       app.isAuthenticated.value = !!localStorage.getItem("token");
       app.isInstantiated.value = true;
+      console.info(`🚀 App instantiated: ${app.name}`, app);
 
       if (app.isAuthenticated.value) {
         const { user: userData } = await client.request(gql`

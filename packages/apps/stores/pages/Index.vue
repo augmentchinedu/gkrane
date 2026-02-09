@@ -110,7 +110,7 @@
               img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDKo8G-mgBqsJa551uvAbq3T7ZBoAlwxBWGsoZ6YNKiBa6WTIv_ze_7OXIvISoFjKCeLCWVCNYvgNTP0dVlljfBnVCEi7ORHWLR1P58aIxT51fxUtPQaAVjuqE0bVDH66kU_pXjpDrkKccfVR0NVTC0GUvfPcNPYyp2TATaftbH22ZAcMJ-6M0g90Cacj3adr3IJ0Hqjq81x1B5Y3vZw96o9T10p47RUsmEzp6CQ2ATMuh0TcfGcYEBgV8rfd_6-g0XpV8ktUoJgJg',
             },
             {
-              title: 'Drinks',
+              title: 'Drink',
               subtitle: 'Premium spirits',
               img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBQjvLLNrKsW9zXgcZMAnLefPIe03EgcJymXava-n46rtoEsx9GMhtfyWxs-wax2dy-Fn4A8qtyRZAoqsFo8TQuW8vnS3JMnnpsKH7j0F5wm8wbSAJrfPWwQvmkkH2ZrEEQOt2TElsfFwLIqLEDJXUT09Vc7ewamlk2sCoLkFj2v8u1kbb-WrfaRGWnMVM4BNhCQzh2bUrPgTs2P2GcgBj8rf_809ZecZbvAOWzymRQHPdH54jWozb5pp0c4AwRcBOsq1UhlF_P9Us',
             },
@@ -120,12 +120,12 @@
               img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBzbPq0Lu5IbFhGGh8eg_L5xmAjJSeeszlJpWDvbf1KyYCF6-36hAPfYaMPM_nWL9FjYOQxrf5RDTf7mJ_DTnxKyI5cx3uvJm807o4LQVtwOmxCiwMuOYL2KsOkx_Y5IygIPBO7gAuab40URLPf8Dbz4lxEeC--hRvcGW_Ic9EkcXI71G5TvBYk2vRD8lMApfAgHiWvyORA-BtGxKasDA6iqctPLE9j-He2d4axmCJaelMEQ2Er-BLvJPfBU0fp24tNXfs9BAk7whA',
             },
             {
-              title: 'Gadgets',
+              title: 'Gadget',
               subtitle: ' Smart tech',
               img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB82HPbSXjnMPVOs8hvspEKrIvD_jWSrDFlDGxvZMIOhj8wKKkmE08u7v_QslDjV4_KPkGXFGBvzajX7g1WV4MeHArkD9_A91FXw8GtzrgAJCLGELm5E2YHyDg5sW1Rt5PRcZtZacFML5iC80kiLYU6C8yHxCdfJWHp2F7hXDiCCC5Q3QFaml4gWyVTzD3JUzPT-hTRBQY6D09xA-SfKUzWC8mUMRrpugsDkLr2dwNED-sxWYg8JeaUw-yAAan1b5n_XagXyCPh6s0',
             },
             {
-              title: 'Hairs',
+              title: 'Hair',
               subtitle: 'Styling & Care',
               img: 'https://img.grouponcdn.com/seocms/43RYZ77uFqFrveh7Zquw2jRVtqYK/hero_png-600x390',
             },

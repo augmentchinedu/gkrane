@@ -75,7 +75,7 @@
                      border transition-all" :class="store.type === type
                       ? 'bg-primary/20 text-primary border-primary/50'
                       : 'border-slate-600 text-slate-300 hover:border-primary/30'">
-              {{ type }}
+              {{ pluralize(type) }}
             </button>
           </div>
         </div>
@@ -131,12 +131,14 @@
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, inject } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "@/store";
 
 const router = useRouter();
 const { stores } = useStore();
+
+const pluralize = inject("pluralize");
 
 const loading = ref(false);
 const error = ref(null);
@@ -152,10 +154,10 @@ const storeTypes = [
   "Jewelry",
   "Furniture",
   "Skincare",
-  "Drinks",
+  "Drink",
   "Fashion",
-  "Gadgets",
-  "Hairs",
+  "Gadget",
+  "Hair",
 ];
 
 async function submit() {

@@ -96,37 +96,31 @@
                    focus:ring-1 focus:ring-primary outline-none resize-none" />
         </div>
 
-        <div class="h-24"></div>
+        <div class="mx-auto max-w-md">
+          <!-- Error -->
+          <p v-if="error" class="text-red-400 text-xs text-center mb-3">
+            {{ error }}
+          </p>
+
+          <!-- Submit -->
+          <button @click="submit" :disabled="loading" class="w-full h-16 bg-primary text-black font-extrabold text-lg
+                     rounded-xl flex items-center justify-center gap-2
+                     disabled:opacity-50 disabled:cursor-not-allowed
+                     shadow-[0_8px_30px_rgb(19,236,19,0.3)]
+                     active:scale-[0.98] transition-all">
+            <span v-if="!loading">Create Store</span>
+            <span v-else>Creating…</span>
+            <Icon v-if="!loading" icon="mdi:arrow-right" class="w-6 h-6" />
+          </button>
+
+          <p class="text-center text-[10px] text-slate-500 mt-4 px-8">
+            By clicking "Create Store", you agree to our Merchant Terms of Service
+            and Privacy Policy.
+          </p>
+        </div>
       </form>
     </main>
 
-    <!-- Bottom Action Area -->
-    <div class="fixed bottom-0 left-0 right-0 p-6
-             bg-gradient-to-t from-background-dark
-             via-background-dark/95 to-transparent">
-      <div class="mx-auto max-w-md">
-        <!-- Error -->
-        <p v-if="error" class="text-red-400 text-xs text-center mb-3">
-          {{ error }}
-        </p>
-
-        <!-- Submit -->
-        <button @click="submit" :disabled="loading" class="w-full h-16 bg-primary text-black font-extrabold text-lg
-                 rounded-xl flex items-center justify-center gap-2
-                 disabled:opacity-50 disabled:cursor-not-allowed
-                 shadow-[0_8px_30px_rgb(19,236,19,0.3)]
-                 active:scale-[0.98] transition-all">
-          <span v-if="!loading">Create Store</span>
-          <span v-else>Creating…</span>
-          <Icon v-if="!loading" icon="mdi:arrow-right" class="w-6 h-6" />
-        </button>
-
-        <p class="text-center text-[10px] text-slate-500 mt-4 px-8">
-          By clicking "Create Store", you agree to our Merchant Terms of Service
-          and Privacy Policy.
-        </p>
-      </div>
-    </div>
   </main>
 </template>
 

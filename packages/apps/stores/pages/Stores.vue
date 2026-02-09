@@ -34,7 +34,7 @@
         <div v-for="store in stores" :key="store.name"
           class="store-card flex flex-col rounded-2xl overflow-hidden group">
           <div class="relative aspect-square overflow-hidden bg-[#2f2348]">
-            <img :alt="store.name" :src="store.image"
+            <img :alt="store.name" :src="store.img"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div class="absolute top-2 right-2">
               <div class="px-2 py-1 rounded-full glass-panel text-white text-[10px] font-bold flex items-center gap-1">
@@ -107,5 +107,5 @@ const type = route.params.type?.capitalize() || "Unknown";
 
 const { app } = useStore()
 
-const stores = app.content.stores[type.toLowerCase()] || [];
+const stores = computed(() => app.content.stores[type.toLowerCase()] || []);
 </script>

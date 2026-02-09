@@ -3,7 +3,7 @@ import { useStore } from "@/store";
 
 export function useStores() {
   const create = async (store) => {
-    const { user } = useStore();
+    const { app } = useStore();
 
     store.type = store.type.toLowerCase();
 
@@ -14,6 +14,9 @@ export function useStores() {
             id
             name
             handle
+            img
+            type
+            bio
           }
         }
       `;
@@ -22,6 +25,8 @@ export function useStores() {
         input: store,
       });
 
+      app.content.stores[store.type].unshift(response.createStore);
+      console.log("Store created:", response.createStore);
       return response.createStore;
     } catch (error) {
       console.error("Error creating store:", error);

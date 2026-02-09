@@ -56,14 +56,18 @@
                 {{ store.location }}
               </p>
             </div>
-            <div class="flex items-center justify-between mt-2">
-              <span class="text-primary text-[11px] font-bold uppercase tracking-wider">
-                Visit Store
-              </span>
-              <button
-                class="size-7 flex items-center justify-center rounded-full bg-white/10 text-white active:scale-90 transition-transform">
-                <Icon icon="mdi:chevron-right" class="text-[18px]" />
-              </button>
+
+            <div>
+              <a :href="`https://${store.handle}.gkrane.online`" target="_blank"
+                class="flex items-center justify-between mt-2">
+                <span class="text-primary text-[11px] font-bold uppercase tracking-wider">
+                  Visit Store
+                </span>
+                <button
+                  class="size-7 flex items-center justify-center rounded-full bg-white/10 text-white active:scale-90 transition-transform">
+                  <Icon icon="mdi:chevron-right" class="text-[18px]" />
+                </button>
+              </a>
             </div>
           </div>
         </div>

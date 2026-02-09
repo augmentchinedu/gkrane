@@ -1,21 +1,11 @@
 <template>
-  <main
-    class="font-display bg-background-light dark:bg-background-dark min-h-screen"
-  >
-    <div
-      class="relative flex h-screen w-full flex-col overflow-hidden abstract-bg"
-    >
+  <main class="font-display bg-background-light dark:bg-background-dark min-h-screen">
+    <div class="relative flex h-screen w-full flex-col overflow-hidden abstract-bg">
       <!-- App Grid -->
       <div class="flex-1 px-6 pt-4 pb-4 overflow-y-auto">
         <div class="grid grid-cols-4 gap-y-7 gap-x-4">
-          <a
-            v-for="app in apps"
-            :key="app.name"
-            :href="`https://${app.name.toLowerCase()}.gkrane.online`"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex flex-col items-center gap-1.5"
-          >
+          <a v-for="app in apps" :key="app.name" :href="`https://${app.name.toLowerCase()}.gkrane.online`"
+            target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1.5">
             <div :class="['app-icon', app.bg]">
               <Icon :icon="app.icon" :class="app.color" />
             </div>
@@ -28,33 +18,22 @@
       <div class="px-6 pb-8 space-y-4">
         <div class="px-2">
           <div class="flex w-full items-stretch glass-effect rounded-2xl h-10">
-            <div
-              class="text-white/60 flex border-none items-center justify-center pl-4"
-            >
+            <div class="text-white/60 flex border-none items-center justify-center pl-4">
               <Icon icon="material-symbols:search" class="text-lg" />
             </div>
             <input
               class="form-input flex w-full min-w-0 flex-1 bg-transparent border-none text-white focus:ring-0 placeholder:text-white/50 px-4 pl-2 text-sm font-normal"
-              placeholder="Search"
-            />
+              placeholder="Search" />
           </div>
         </div>
 
-        <div
-          class="glass-effect rounded-[2.5rem] p-3 flex justify-around items-center"
-        >
-          <router-link
-            v-for="action in actions"
-            :key="action.name"
-            :to="`/${action.name.toLowerCase()}`"
-            class="flex flex-col items-center justify-center size-14 rounded-xl transition-transform active:scale-90"
-          >
-            <div
-              :class="[
-                'size-12 rounded-2xl flex items-center justify-center shadow-md',
-                action.bg,
-              ]"
-            >
+        <div class="glass-effect rounded-[2.5rem] p-3 flex justify-around items-center">
+          <router-link v-for="action in actions" :key="action.name" :to="`/${action.name.toLowerCase()}`"
+            class="flex flex-col items-center justify-center size-14 rounded-xl transition-transform active:scale-90">
+            <div :class="[
+              'size-12 rounded-2xl flex items-center justify-center shadow-md',
+              action.bg,
+            ]">
               <Icon :icon="action.icon" :class="action.color" />
             </div>
           </router-link>
@@ -70,6 +49,13 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+if (import.meta.env.MODE === "production" && window.location.hostname !== "gkrane.online") {
+  router.push({ name: 'notfound' });
+}
 
 // App grid data
 const apps = [

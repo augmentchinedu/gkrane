@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { reactive } from "vue";
 import { defineStore } from "pinia";
 import { client, gql } from "@/gql/index.js";
@@ -14,6 +15,16 @@ export const useStore = defineStore("store", () => {
   const game = reactive({});
   const gamer = useGamer(game);
   const stores = useStores();
+
+  function getPrimaryDomain(hostname) {
+    const parts = hostname.split(".");
+    const len = parts.length;
+
+    if (len <= 2) return hostname; // e.g., example.com
+
+    // Handle subdomains: take last 2 parts
+    return parts.slice(-2).join(".");
+  }
 
   /* ---------------- INIT ---------------- */
   async function instantiate() {
@@ -47,7 +58,8 @@ export const useStore = defineStore("store", () => {
       app.name = clientData.username;
       app.package = clientData.package;
       app.content = reactive(clientData.content || {});
-      app.isAuthenticated.value = !!localStorage.getItem("token");
+      app.isAuthenticated.value = !!Cookies.get("token");
+
       app.isInstantiated.value = true;
       console.info(`🚀 App instantiated: ${app.name}`, app);
 
@@ -63,7 +75,7 @@ export const useStore = defineStore("store", () => {
         `);
 
         Object.assign(user, userData);
-        console.log("User authenticated:", user)
+        console.log("User authenticated:", user);
       }
 
       // ✅ Dynamically load game package
@@ -97,7 +109,13 @@ export const useStore = defineStore("store", () => {
       }
 
       // ✅ Success
-      localStorage.setItem("token", signup.token);
+      Cookies.set("token", signup.token, {
+        domain: getPrimaryDomain(window.location.hostname), // <- make it valid for all subdomains
+        path: "/",
+        secure: true, // only over HTTPS
+        sameSite: "None", // required for cross-site
+      });
+
       app.isAuthenticated.value = true;
       Object.assign(user, signup.user);
 
@@ -128,7 +146,13 @@ export const useStore = defineStore("store", () => {
         throw new Error(data.error?.message || "Invalid credentials");
       }
 
-      localStorage.setItem("token", data.token);
+      Cookies.set("token", data.token, {
+        domain: getPrimaryDomain(window.location.hostname), // <- make it valid for all subdomains
+        path: "/",
+        secure: true, // only over HTTPS
+        sameSite: "None", // required for cross-site
+      });
+
       app.isAuthenticated.value = true;
       Object.assign(user, data.user);
 
@@ -142,7 +166,10 @@ export const useStore = defineStore("store", () => {
   /* ---------------- LOGOUT ---------------- */
 
   function signout() {
-    localStorage.removeItem("token");
+    Cookies.remove("token", {
+      domain: getPrimaryDomain(window.location.hostname),
+      path: "/",
+    });
     app.isAuthenticated.value = false;
     app.isInitialized.value = false;
 

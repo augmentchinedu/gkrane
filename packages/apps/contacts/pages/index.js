@@ -4,6 +4,6 @@ export default [
     name: "index",
     path: "index",
     meta: {},
-    beforeEach: undefined,
+    beforeEnter: undefined,
   },
 ];

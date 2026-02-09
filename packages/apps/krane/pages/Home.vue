@@ -49,13 +49,6 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
-import { useRouter } from "vue-router";
-
-const router = useRouter();
-
-if (import.meta.env.MODE === "production" && window.location.hostname !== "gkrane.online") {
-  router.push({ name: 'notfound' });
-}
 
 // App grid data
 const apps = [
@@ -216,8 +209,20 @@ const apps = [
     color: "text-neutral-800 text-3xl",
   },
   {
-    name: "Spendly",
-    icon: "mdi:finance",
+    name: "Books",
+    icon: "mdi:book",
+    bg: "bg-emerald-400",
+    color: "text-neutral-800 text-3xl",
+  },
+  {
+    name: "Seller",
+    icon: "mdi:exchange",
+    bg: "bg-emerald-400",
+    color: "text-neutral-800 text-3xl",
+  },
+  {
+    name: "Institutions",
+    icon: "material-symbols:account-balance",
     bg: "bg-emerald-400",
     color: "text-neutral-800 text-3xl",
   },

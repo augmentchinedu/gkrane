@@ -4,20 +4,20 @@ export default [
     name: "board",
     path: "/:id/board",
     meta: {},
-    beforeEach: undefined,
+    beforeEnter: undefined,
   },
   {
     component: () => import("./Home.vue"),
     name: "home",
     path: "home",
     meta: {},
-    beforeEach: undefined,
+    beforeEnter: undefined,
   },
   {
     component: () => import("./OnBoard.vue"),
     name: "onboard",
     path: "/:id",
     meta: {},
-    beforeEach: undefined,
+    beforeEnter: undefined,
   },
 ];

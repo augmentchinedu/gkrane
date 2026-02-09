@@ -33,14 +33,14 @@ function getExportedNames(fileContent) {
   const metaMatch = fileContent.match(
     /export\s+(?:const|let|var)?\s*meta\s*=\s*(\{[\s\S]*?\})/,
   );
-  const beforeEachMatch = fileContent.match(
-    /export\s+(?:function|const|let|var)?\s*beforeEach\s*=?\s*(.*)/,
+  const beforeEnterMatch = fileContent.match(
+    /export\s+(?:function|const|let|var)?\s*beforeEnter\s*=?\s*(.*)/,
   );
 
   if (nameMatch) exports.name = nameMatch[1];
   if (pathMatch) exports.path = pathMatch[1];
   if (metaMatch) exports.meta = metaMatch[1].trim();
-  if (beforeEachMatch) exports.beforeEach = beforeEachMatch[1].trim();
+  if (beforeEnterMatch) exports.beforeEnter = beforeEnterMatch[1].trim();
 
   return exports;
 }
@@ -73,15 +73,15 @@ ${children.join(",\n")}
       const name = (exported.name || fallbackName).toLowerCase();
       const routePath = (exported.path || fallbackName).toLowerCase();
       const meta = exported.meta || "{}";
-      const beforeEach = exported.beforeEach || "undefined";
+      const beforeEnter = exported.beforeEnter || "undefined";
 
       routes.push(`{
-  component: () => import("./${relativePath.replace(/\\/g, "/")}"),
-  name: "${name}",
-  path: "${routePath}",
-  meta: ${meta},
-  beforeEach: ${beforeEach}
-}`);
+    component: () => import("./${relativePath.replace(/\\/g, "/")}"),
+    name: "${name}",
+    path: "${routePath}",
+    meta: ${meta},
+    beforeEnter: ${beforeEnter}
+  }`);
     }
   });
 

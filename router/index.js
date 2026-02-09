@@ -59,7 +59,7 @@ function buildRoutesFromTree(pages, parentPath = "", parentName = "") {
       path: fullPath,
       name: routeName,
       meta: node.meta ?? {},
-      beforeEnter: node.beforeEach,
+      beforeEnter: node.beforeEnter,
     };
 
     if (node.component) {

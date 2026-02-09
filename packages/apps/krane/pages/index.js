@@ -4,6 +4,13 @@ export default [
     name: "home",
     path: "home",
     meta: {},
-    beforeEach: undefined,
+    beforeEnter: (to, from, next) => {
+      if (
+        import.meta.env.MODE === "production" &&
+        window.location.hostname !== "gkrane.online"
+      ) {
+        next({ name: "notfound" });
+      } else next();
+    },
   },
 ];

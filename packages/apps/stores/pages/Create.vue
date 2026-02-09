@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex flex-col">
+  <main class="bg-background-light dark:bg-background-dark text-slate-900 min-h-screen flex flex-col">
     <!-- Top Navigation Bar -->
     <header class="sticky top-0 z-50 pt-12 pb-4 px-4 bg-background-dark/60 backdrop-blur-md border-b border-primary/10">
       <div class="flex items-center justify-between mx-auto">

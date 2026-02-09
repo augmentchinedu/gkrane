@@ -14,7 +14,7 @@
         </div>
 
         <h2
-          class="text-black dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center"
+          class=" text-lg font-bold leading-tight tracking-tight flex-1 text-center"
         >
           Stores
         </h2>
@@ -33,7 +33,7 @@
     <main class="pt-20 pb-32 px-4 mx-auto">
       <header class="pt-4">
         <h1
-          class="text-black dark:text-white tracking-tight text-[32px] font-bold leading-tight mb-5"
+          class="tracking-tight text-[32px] font-bold leading-tight mb-5"
         >
           Browse Categories
         </h1>

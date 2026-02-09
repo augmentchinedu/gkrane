@@ -1,10 +1,10 @@
 <template>
-    <main class="bg-background-light dark:bg-background-dark text-white min-h-screen flex flex-col">
+    <main class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
         <!-- Top Navigation -->
         <div class="flex items-center bg-transparent p-4 pb-2 justify-between">
             <Back />
 
-            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
+            <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">
                 Store Created
             </h2>
         </div>

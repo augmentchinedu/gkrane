@@ -4,7 +4,7 @@
     <div class="fixed top-0 left-0 right-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
       <div class="flex items-center p-4 pb-2 justify-between mx-auto">
         <Back />
-        <h2 class="text-black dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">
+        <h2 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">
           Stores
         </h2>
         <div class="flex w-12 items-center justify-end">
@@ -19,11 +19,11 @@
     <!-- Content -->
     <main class="pt-20 pb-28 px-4 mx-auto">
       <div class="flex items-center justify-between mb-6">
-        <h1 class="text-black dark:text-white tracking-tight text-[32px] font-bold leading-none">
+        <h1 class="tracking-tight text-[32px] font-bold leading-none">
           {{ type }} Stores
         </h1>
         <button
-          class="flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-black dark:text-white text-sm font-medium border border-white/10">
+          class="flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-sm font-medium border border-white/10">
           <Icon icon="mdi:filter-variant" class="text-sm" />
           Filter
         </button>

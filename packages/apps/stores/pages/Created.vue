@@ -72,13 +72,13 @@
         <!-- Bottom Action Buttons -->
         <div class="w-full p-6 pb-12">
             <div class="flex flex-col gap-3 max-w-[480px] mx-auto">
-                <a :href="`https://${$route.query.handle}.gkrane.online/admin/dashboard`">
+                <a :href="`https://${$route.query.handle}.gkrane.online/admin/dashboard`" target="_blank">
                     <button
                         class="flex items-center justify-center rounded-xl h-14 px-5 bg-primary text-background-dark text-lg font-bold w-full active:scale-[0.98] transition-transform">
                         Add First Product
                     </button>
                 </a>
-                <a :href="`https://${$route.query.handle}.gkrane.online/admin/dashboard`">
+                <a :href="`https://${$route.query.handle}.gkrane.online/admin/dashboard`" target="_blank">
                     <button
                         class="flex items-center justify-center rounded-xl h-14 px-5 bg-white/5 border border-white/10 text-white text-lg font-bold w-full active:scale-[0.98] transition-transform">
                         Go to Dashboard

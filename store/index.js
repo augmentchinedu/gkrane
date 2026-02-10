@@ -5,6 +5,7 @@ import { client, gql } from "@/gql/index.js";
 import { USER_BASE_FIELDS } from "@/gql/queries/user.base.js";
 import { SIGNUP, SIGNIN } from "@/gql/mutations/auth.js";
 import { useGamer } from "./gamer/index.js";
+import { useStor } from "./store/index.js";
 import { useStores } from "./stores/index.js";
 import { useApp } from "./app/index.js";
 
@@ -15,6 +16,7 @@ export const useStore = defineStore("store", () => {
   const game = reactive({});
   const gamer = useGamer(game);
   const stores = useStores();
+  const store = useStor();
 
   function getPrimaryDomain(hostname) {
     const parts = hostname.split(".");
@@ -57,10 +59,12 @@ export const useStore = defineStore("store", () => {
       );
       app.name = clientData.username;
       app.package = clientData.package;
+      app.type = clientData.type;
       app.content = reactive(clientData.content || {});
       app.isAuthenticated.value = !!Cookies.get("token");
 
       app.isInstantiated.value = true;
+      console.log(app.isInstantiated.value);
       console.info(`🚀 App instantiated: ${app.name}`, app);
 
       if (app.isAuthenticated.value) {
@@ -170,6 +174,7 @@ export const useStore = defineStore("store", () => {
       domain: getPrimaryDomain(window.location.hostname),
       path: "/",
     });
+
     app.isAuthenticated.value = false;
     app.isInitialized.value = false;
 
@@ -182,6 +187,7 @@ export const useStore = defineStore("store", () => {
     user,
     gamer,
     game,
+    store,
     stores,
     signup,
     signin,

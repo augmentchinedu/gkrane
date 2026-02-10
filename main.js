@@ -1,6 +1,7 @@
 import "./bootstrap/index.js";
 
 import "./main.css";
+import "./css/store.css";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";

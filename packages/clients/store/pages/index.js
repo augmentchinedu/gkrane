@@ -74,4 +74,17 @@ export default [
       },
     ],
   },
+  ,
+  {
+    path: "/admin",
+    children: [
+      {
+        component: () => import("./admin/Dashboard.vue"),
+        name: "dashboard",
+        path: "dashboard",
+        meta: {},
+        beforeEnter: undefined,
+      },
+    ],
+  },
 ];
